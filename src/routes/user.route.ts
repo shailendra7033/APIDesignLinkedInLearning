@@ -37,7 +37,10 @@ router.get('/users', async (_req: Request, res: Response) => {
   try {
     const users = await UserModel.find().lean();
 
-    return res.status(200).json(users);
+    return res.status(200).json({
+       success: true,
+       data: users,
+        });
   } catch (err) {
     if (err instanceof Error) {
       return res.status(500).json({ message: err.message });
